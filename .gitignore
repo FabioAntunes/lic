@@ -1,2 +1,37 @@
 .metadata
 .recommenders
+
+Modulo1/*.pydevproject
+Modulo1/bin/
+Modulo1/tmp/
+Modulo1/*.tmp
+Modulo1/*.bak
+Modulo1/*.swp
+Modulo1/*~.nib
+Modulo1/local.properties
+Modulo1/.settings/
+Modulo1/.loadpath
+
+# Eclipse Core
+Modulo1/.project
+
+# External tool builders
+Modulo1/.externalToolBuilders/
+
+# Locally stored "Eclipse launch configurations"
+Modulo1/*.launch
+
+# CDT-specific
+Modulo1/.cproject
+
+# JDT-specific (Eclipse Java Development Tools)
+Modulo1/.classpath
+
+# PDT-specific
+Modulo1/.buildpath
+
+# sbteclipse plugin
+Modulo1/.target
+
+# TeXlipse plugin
+Modulo1/.texlipse
