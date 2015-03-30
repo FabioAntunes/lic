@@ -1,0 +1,13 @@
+import isel.leic.usbio.UsbPort;
+
+
+public class main {
+
+	public static void main(String[] args) {
+		// CONTADOR
+		UsbPort.out(0xff);
+		Contador.count();
+
+	}
+
+}
