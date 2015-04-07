@@ -4,7 +4,7 @@ import isel.leic.utils.Time;
 public class Kit {
 	
 	// guarda a imagem do valor que está no porto de saída do USBPort
-	private int outImage;
+	private static int outImage = 0;
 	
 	/**
 	 * Obtém valores de entrada do USBPort
@@ -50,7 +50,8 @@ public class Kit {
 	 * @param mask
 	 */
 	public void setBit(int mask) {
-		
+		outImage = outImage|mask;
+		out(outImage);
 	}
 	
 	/**
@@ -58,7 +59,8 @@ public class Kit {
 	 * @param mask
 	 */
 	public void clrBit(int mask) {
-		
+		outImage = outImage & ~mask;
+		out(outImage);
 	}
 	
 	/**
