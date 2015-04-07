@@ -3,6 +3,9 @@ import isel.leic.utils.Time;
 
 public class Kit {
 	
+	// guarda a imagem do valor que está no porto de saída do USBPort
+	private int outImage;
+	
 	/**
 	 * Obtém valores de entrada do USBPort
 	 * @return Valor inteiro, negado, correspondente aos 8 bits de entrada
@@ -40,6 +43,38 @@ public class Kit {
 	 */
 	public static long getTimeInMillis() {
 		return Time.getTimeInMillis();
+	}
+	
+	/**
+	 * 
+	 * @param mask
+	 */
+	public void setBit(int mask) {
+		
+	}
+	
+	/**
+	 * 
+	 * @param mask
+	 */
+	public void clrBit(int mask) {
+		
+	}
+	
+	/**
+	 * Para obter o valor da imagem guardada do porto de saída
+	 * @return o valor guardado anteriormente no porto de saída
+	 */
+	public int getOutImage() {
+		return 0;
+	}
+	
+	/**
+	 * Definir o valor do porto de saída para guardar a imagem
+	 * @param outImage valor a guardar
+	 */
+	public void setOutImage(int outImage) {
+		this.outImage = outImage;
 	}
 	
 }
