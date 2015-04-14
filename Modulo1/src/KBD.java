@@ -1,7 +1,7 @@
 
 public class KBD {
 	public static final int KEY_MASK = 0x0F; // Máscara para obter os 4 bits, menor peso, do Kit
-	public static final int K_VAL_MASK = 0x80; // Máscara para obter o bit maior peso do valor de entrada do Kit
+	public static final int K_VAL_MASK = 0x10; // Máscara para obter o bit maior peso do valor de entrada do Kit
 	public static final int K_ACK_MASK = 0x01; // Máscara para emitir o bit de menor peso para o Kit
 	public static final char NONE = 0; // Valor retornado quando não há tecla.
 	private static final boolean SCAN_SOFTWARE = true; // Mudar na implementação 2.

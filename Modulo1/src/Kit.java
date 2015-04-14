@@ -49,7 +49,7 @@ public class Kit {
 	 * 
 	 * @param mask
 	 */
-	public void setBit(int mask) {
+	public static void setBit(int mask) {
 		outImage = outImage|mask;
 		out(outImage);
 	}
@@ -58,7 +58,7 @@ public class Kit {
 	 * 
 	 * @param mask
 	 */
-	public void clrBit(int mask) {
+	public static void clrBit(int mask) {
 		outImage = outImage & ~mask;
 		out(outImage);
 	}
@@ -67,7 +67,7 @@ public class Kit {
 	 * Para obter o valor da imagem guardada do porto de saída
 	 * @return o valor guardado anteriormente no porto de saída
 	 */
-	public int getOutImage() {
+	public static int getOutImage() {
 		return 0;
 	}
 	
