@@ -11,14 +11,13 @@ public class Main {
 	
 	private static void kbd(){
 		KBD.init();
-		//KBD.getKey();
+		KBD.getKey();
 		KBD.waitKey(10000);
 	}
 	
 	private static void emitter(){
-		Emitter.init();
-		//KBD.getKey();
-		Emitter.send(false, 6, 3);
+		Kit.clear();
+		Emitter.send(true, 341, 9);
 	}
 
 }
