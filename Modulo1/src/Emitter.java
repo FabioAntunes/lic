@@ -1,17 +1,70 @@
 
 public class Emitter {
+	public static final int MIBy_MASK = 0x20; // Máscara para obter o 5 bit, do Kit
+	public static final int SEND_MASK = 0x02; // Máscara para emitir o segundo bit de menor peso para o Kit
+	public static final int MIxD_MASK = 0x03; // Máscara para emitir o terceio bit de menor peso para o Kit
+	public static final int MIck_MASK = 0x04; // Máscara para emitir o quarto bit de menor peso para o Kit
+	private static int in_val;
+	
 	// Envia tramas para o módulo Serial Receiver.
 	// Envia uma trama com o bit ‘lnd’ e os bits de ‘data’ (do menor peso ao maior peso)
-	// O parâmetro ‘size’ indica o número de bits de informação (4 ou 5).
+	// O parâmetro ‘size’ indica o número de bits de informação (4 ou 9).
 	public static void send(boolean lnp, int data, int size){
-		
+		send(data<<1|(lnp ? 1 : 0), size+1);
 	}
+	
 	// Indica se o MIS está ocupado a processar uma trama.
 	public static boolean busy(){
+		in_val = Kit.in();
+		if((in_val&MIBy_MASK) == MIBy_MASK){
+			return true;
+		}
+		
 		return false;
 	}
+	
 	// Estabelece os valores iniciais no porto de saída.
 	public static void init(){
+		Kit.setBit(MIxD_MASK);
+		Kit.clrBit(MIck_MASK);
+	}
+	
+	/**
+	 * Espera que o busy fique a zero
+	 */
+	private static void waitReady(){
+		while(busy())
+			;
+	}
+	
+	private static void sendBit(boolean bit){
+		if(bit){
+			Kit.setBit(MIxD_MASK);
+		}else{
+			Kit.clrBit(MIxD_MASK);
+		}
+		Kit.setBit(MIck_MASK);
+		Kit.clrBit(MIck_MASK);
+	}
+	
+	private static void send(int data, int size){
+		waitReady();
+		initTransmission();
+		
+		int mask =  0x01;
+		
+		for (int i = 0; i < size; i++) {
+			sendBit((mask&data) != 0);
+			mask<<=1;
+		}
+		
 		
 	}
+	
+	private static void initTransmission(){
+		Kit.setBit(MIxD_MASK);
+		Kit.clrBit(MIck_MASK);
+		Kit.clrBit(MIxD_MASK);
+	}
+	
 }

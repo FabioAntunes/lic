@@ -46,19 +46,19 @@ public class Kit {
 	}
 	
 	/**
-	 * 
+	 * Fazer set de apenas um bit mantendo o resto
 	 * @param mask
 	 */
-	public void setBit(int mask) {
+	public static void setBit(int mask) {
 		outImage = outImage|mask;
 		out(outImage);
 	}
 	
 	/**
-	 * 
+	 * Colocar os bits a zero correspondentes a mascara
 	 * @param mask
 	 */
-	public void clrBit(int mask) {
+	public static void clrBit(int mask) {
 		outImage = outImage & ~mask;
 		out(outImage);
 	}
