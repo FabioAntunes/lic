@@ -67,7 +67,7 @@ public class Kit {
 	 * Para obter o valor da imagem guardada do porto de saída
 	 * @return o valor guardado anteriormente no porto de saída
 	 */
-	public int getOutImage() {
+	public static int getOutImage() {
 		return 0;
 	}
 	
