@@ -10,7 +10,7 @@ public class Emitter {
 	// Envia uma trama com o bit ‘lnd’ e os bits de ‘data’ (do menor peso ao maior peso)
 	// O parâmetro ‘size’ indica o número de bits de informação (4 ou 9).
 	public static void send(boolean lnp, int data, int size){
-		send(data<<1|(lnp ? 1 : 0), size+1);
+		sendGeneric(data<<1|(lnp ? 1 : 0), size+1);
 	}
 	
 	// Indica se o MIS está ocupado a processar uma trama.
@@ -47,7 +47,7 @@ public class Emitter {
 		Kit.clrBit(MIck_MASK);
 	}
 	
-	private static void send(int data, int size){
+	private static void sendGeneric(int data, int size){
 		waitReady();
 		initTransmission();
 		
