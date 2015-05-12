@@ -1,7 +1,6 @@
 
 public class Door {
 	public enum velocity {slow, medium, fast};
-	private static boolean doorOpen;
 	
 	/**
 	 *  Dá ordem de abertura da porta com respectiva velocidade.
@@ -9,7 +8,6 @@ public class Door {
 	 */
 	public static void abrirPorta(int veloc){
 		Emitter.send(false, (veloc<<1)|1, 3);
-		doorOpen = true;
 	}
 	
 	/**
@@ -17,8 +15,7 @@ public class Door {
 	 * @param veloc
 	 */
 	public static void fecharPorta(int veloc){
-		Emitter.send(false, (veloc<<1)|0, 3);
-		doorOpen = false;
+		Emitter.send(false, (veloc<<1) & 0XFE, 3);
 	}
 	
 	/**
@@ -33,7 +30,7 @@ public class Door {
 	 * Estabelece os valores iniciais. 
 	 */
 	public static void init(){
-		doorOpen = false;
+		return;
 	}
 
 }

@@ -6,7 +6,10 @@ public class Main {
 		//kbd();
 		
 		//Emitter
-		emitter();
+		//emitter();
+		
+		//Door
+		door(3);
 	}
 	
 	private static void kbd(){
@@ -18,6 +21,11 @@ public class Main {
 	private static void emitter(){
 		Kit.clear();
 		Emitter.send(true, 341, 9);
+	}
+	
+	private static void door(int velocidade){
+		Kit.clear();
+		Door.fecharPorta(velocidade);
 	}
 
 }

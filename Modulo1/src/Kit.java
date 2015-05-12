@@ -76,7 +76,7 @@ public class Kit {
 	 * @param outImage valor a guardar
 	 */
 	public void setOutImage(int outImage) {
-		this.outImage = outImage;
+		Kit.outImage = outImage;
 	}
 	
 }
