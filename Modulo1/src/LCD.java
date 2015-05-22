@@ -12,7 +12,7 @@ public class LCD {
 	 * @param data
 	 */
 	 private static void sendByte(boolean rs, int data){
-		 Emitter.send(true, (rs ? (data<<1) | 1 : (data<<1) & 0XFE), 9);
+		 Emitter.send(true, data<<1 | (rs ? 1 : 0), 9);
 	 }
 	 
 	 /**
@@ -39,7 +39,7 @@ public class LCD {
 		 sendByte(COMMAND, displayClear);
 		 sendByte(COMMAND, entryModeSet);
 		 sendByte(COMMAND, displayOn);
-		 
+		 System.out.println("coiso");
 	 }
 	 
 	 /**

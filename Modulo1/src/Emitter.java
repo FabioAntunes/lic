@@ -15,7 +15,7 @@ public class Emitter {
 	 * @param size
 	 */
 	public static void send(boolean lnp, int data, int size){
-		sendGeneric((lnp ? (data<<1)|1 : (data<<1) & 0XFE), size+1);
+		sendGeneric(data<<1 |(lnp ? 1 : 0), size+1);
 	}
 	
 	/**
