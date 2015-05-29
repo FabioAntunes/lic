@@ -35,7 +35,7 @@ public class Emitter {
 	 * Estabelece os valores iniciais no porto de saída.
 	 */
 	public static void init(){
-		Kit.clrBit(MIxD_MASK);
+		Kit.setBit(MIxD_MASK);
 		Kit.clrBit(MIck_MASK);
 	}
 	
@@ -62,6 +62,7 @@ public class Emitter {
 			mask<<=1;
 		}
 		
+		Kit.setBit(MIxD_MASK);
 	}
 	
 	private static void initTransmission(){

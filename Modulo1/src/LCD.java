@@ -23,7 +23,7 @@ public class LCD {
 		 int fontLineCommand = 0X38;
 		 int displayOff = 0X08;
 		 int displayClear = 0X01;
-		 int entryModeSet = 0X07;
+		 int entryModeSet = 0X06;
 		 int displayOn = 0X0F;
 		 sendByte(COMMAND, initCommand);
 		 

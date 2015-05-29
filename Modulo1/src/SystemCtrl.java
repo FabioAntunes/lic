@@ -1,6 +1,6 @@
 
 
-public class System {
+public class SystemCtrl {
 	private static final int NUM_USERS = 100;
 	private User[] users = new User[NUM_USERS];
 	

@@ -6,9 +6,12 @@ public class Main {
 		//kbd();
 //		KBD.init();
 //		Door.init();
-		Kit.clear();
+		//Kit.clear();
+		Emitter.init();
 		LCD.init();
-		LCD.write('H');
+		LCD.write("sss");
+		LCD.cursor(1,2);
+		LCD.write("col2");
 //		door(2);
 	}
 	
