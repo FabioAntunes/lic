@@ -1,9 +1,24 @@
 
 public class User {
 	private int id;
+	private String nome;
 	private int password;
 	private int acumulado;
 	private int minutes;
+	
+	public User(int id, String nome, int password){
+		this.id = id;
+		this.nome = nome;
+		this.password= password;
+	}
+	
+	public User(int id, String nome, int password, int acumulado, int minutes){
+		this.id = id;
+		this.nome = nome;
+		this.password= password;
+		this.acumulado = acumulado;
+		this.minutes = minutes;
+	}
 	
 	/**
 	 * Obter id do utilizador
