@@ -87,7 +87,6 @@ public class User {
 		if (id != other.id)
 			return false;
 		return true;
-	}
-	
+	}	
 	
 }

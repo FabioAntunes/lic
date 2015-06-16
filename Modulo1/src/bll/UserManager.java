@@ -1,6 +1,6 @@
 package bll;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 
 import dal.UserDAO;
 import exceptions.FullListException;
@@ -8,7 +8,7 @@ import exceptions.UserNotFoundException;
 
 public class UserManager {
 	private static final int NUM_USERS = 100;
-	private ArrayList<User> users = new ArrayList<User>();
+	private LinkedList<User> users = new LinkedList<User>();
 	private UserDAO userDAO = new UserDAO();
 	
 	/**
@@ -52,10 +52,6 @@ public class UserManager {
 	 * Carrega os utilzadores existentes na nossa Data Access Layer
 	 */
 	public void loadUsers(){
-		User[] users = userDAO.getUsers();
-		
-		for (User user : users) {
-			//adicionar utilizador
-		}
+		users = userDAO.getUsers();
 	}
 }
