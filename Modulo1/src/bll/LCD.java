@@ -1,3 +1,6 @@
+package bll;
+import dal.Kit;
+
 
 public class LCD {
 	public static final int LINES = 2;

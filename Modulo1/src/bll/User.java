@@ -1,3 +1,4 @@
+package bll;
 
 public class User {
 	private int id;
@@ -5,12 +6,6 @@ public class User {
 	private int password;
 	private int acumulado;
 	private int minutes;
-	
-	public User(int id, String nome, int password){
-		this.id = id;
-		this.nome = nome;
-		this.password= password;
-	}
 	
 	public User(int id, String nome, int password, int acumulado, int minutes){
 		this.id = id;
@@ -65,4 +60,34 @@ public class User {
 	public void setAcumulado(int acumulado) {
 		this.acumulado = acumulado;
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + id;
+		return result;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		User other = (User) obj;
+		if (id != other.id)
+			return false;
+		return true;
+	}
+	
+	
 }
