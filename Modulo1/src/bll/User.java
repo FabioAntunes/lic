@@ -2,16 +2,17 @@ package bll;
 
 public class User {
 	private int id;
-	private String nome;
+	private String name;
 	private int password;
-	private int acumulado;
+	private int sum;
 	private int minutes;
-	
-	public User(int id, String nome, int password, int acumulado, int minutes){
+
+
+	public User(int id, String name, int password, int sum, int minutes){
 		this.id = id;
-		this.nome = nome;
+		this.name = name;
 		this.password= password;
-		this.acumulado = acumulado;
+		this.sum = sum;
 		this.minutes = minutes;
 	}
 	
@@ -29,6 +30,20 @@ public class User {
 	 */
 	public void setId(int id) {
 		this.id = id;
+	}
+	
+	/**
+	 * @return Obter o nome do utilizador
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * @param Define o nome do utilizador
+	 */
+	public void setName(String nome) {
+		this.name = nome;
 	}
 	
 	/**
@@ -50,15 +65,29 @@ public class User {
 	/**
 	 * @return Obter horas acumuladas
 	 */
-	public int getAcumulado() {
-		return acumulado;
+	public int getSum() {
+		return sum;
 	}
 
 	/**
 	 * @param Define as horas acumuladas pelo utilizador
 	 */
-	public void setAcumulado(int acumulado) {
-		this.acumulado = acumulado;
+	public void setSum(int sum) {
+		this.sum = sum;
+	}
+	
+	/**
+	 * @return Obter os minutos do utilizador
+	 */
+	public int getMinutes() {
+		return minutes;
+	}
+
+	/**
+	 * @param Define os minutos do utilizador
+	 */
+	public void setMinutes(int minutes) {
+		this.minutes = minutes;
 	}
 
 	/* (non-Javadoc)

@@ -27,4 +27,24 @@ public class UserDAO {
 		
 		return users;
 	}
+	
+	public void saveUsers(LinkedList<User> users) {
+		String[] serializedUsers = new String[users.size()];
+		
+		for (int i = 0; i < users.size(); i++) {
+			User user = users.get(i);
+			//cria uma string com os dados do utilizador
+			serializedUsers[i] = user.getId() + SEPARATOR + 
+					user.getName() + SEPARATOR + user.getPassword() + SEPARATOR +
+					user.getSum() + SEPARATOR + user.getMinutes();
+		}
+		
+		try {
+			fileReader.writeToFile(FILE, serializedUsers);
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }

@@ -1,7 +1,9 @@
 package dal;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.LinkedList;
 
@@ -18,11 +20,22 @@ public class FileUtils {
 	        	fileLines.add(line);
 	            line = br.readLine();
 	        }
-//	        String everything = sb.toString();
 	    } finally {
 	        br.close();
 	    }
 	    
 	    return fileLines;
+	}
+	
+	public void writeToFile(String fileName, String[] users) throws IOException {
+		BufferedWriter wr = new BufferedWriter(new FileWriter(fileName));
+	    try {
+	        for (String user : users) {
+	        	wr.write(user);
+	        	wr.newLine();
+			}
+	    } finally {
+	        wr.close();
+	    }
 	}
 }
