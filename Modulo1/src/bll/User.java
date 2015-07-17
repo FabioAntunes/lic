@@ -1,14 +1,14 @@
 package bll;
 
 public class User {
-	private int id;
+	private String id;
 	private String name;
-	private int password;
-	private int sum;
-	private int minutes;
+	private String password;
+	private long sum;
+	private long minutes;
 
 
-	public User(int id, String name, int password, int sum, int minutes){
+	public User(String id, String name, String password, long sum, long minutes){
 		this.id = id;
 		this.name = name;
 		this.password= password;
@@ -20,7 +20,7 @@ public class User {
 	 * Obter id do utilizador
 	 * @return Id
 	 */
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 
@@ -28,7 +28,7 @@ public class User {
 	 * Define o id do utilizador
 	 * @param id
 	 */
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	
@@ -50,7 +50,7 @@ public class User {
 	 * Obter password do utilizador
 	 * @return
 	 */
-	public int getPassword() {
+	public String getPassword() {
 		return password;
 	}
 	
@@ -58,64 +58,44 @@ public class User {
 	 * Define a password do utilizador
 	 * @param password
 	 */
-	public void setPassword(int password) {
+	public void setPassword(String password) {
 		this.password = password;
 	}
 
 	/**
 	 * @return Obter horas acumuladas
 	 */
-	public int getSum() {
+	public long getSum() {
 		return sum;
 	}
 
 	/**
 	 * @param Define as horas acumuladas pelo utilizador
 	 */
-	public void setSum(int sum) {
+	public void setSum(long sum) {
 		this.sum = sum;
 	}
-	
+
+	/**
+	 * Incrementa o somatorio
+	 * @param sum valor a incrementar ao total
+	 */
+	public void incrementSum(long sum) {
+		this.sum += sum;
+	}
+
 	/**
 	 * @return Obter os minutos do utilizador
 	 */
-	public int getMinutes() {
+	public long getMinutes() {
 		return minutes;
 	}
 
 	/**
 	 * @param Define os minutos do utilizador
 	 */
-	public void setMinutes(int minutes) {
+	public void setMinutes(long minutes) {
 		this.minutes = minutes;
 	}
-
-	/* (non-Javadoc)
-	 * @see java.lang.Object#hashCode()
-	 */
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + id;
-		return result;
-	}
-
-	/* (non-Javadoc)
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		User other = (User) obj;
-		if (id != other.id)
-			return false;
-		return true;
-	}	
 	
 }

@@ -7,10 +7,11 @@ public class LCD {
 	public static final int COLS = 16;
 	private static final boolean COMMAND = false;
 	private static final boolean WRITE = true;
-	
+	private static final int DISPLAYCLEAR = 0X01;;
+
 	/**
-	 * Envia o bit ‘rs’ e os 8 bits de ‘data’.
-	 * O bit ‘rs’ indica se é comando ou escrita.
+	 * Envia o bit ï¿½rsï¿½ e os 8 bits de ï¿½dataï¿½.
+	 * O bit ï¿½rsï¿½ indica se ï¿½ comando ou escrita.
 	 * @param rs
 	 * @param data
 	 */
@@ -19,13 +20,12 @@ public class LCD {
 	 }
 	 
 	 /**
-	  * Envia a sequência de iniciação do LCD.
+	  * Envia a sequï¿½ncia de iniciaï¿½ï¿½o do LCD.
 	  */
 	 public static void init(){
 		 int initCommand = 0X30;
 		 int fontLineCommand = 0X38;
 		 int displayOff = 0X08;
-		 int displayClear = 0X01;
 		 int entryModeSet = 0X06;
 		 int displayOn = 0X0F;
 		 sendByte(COMMAND, initCommand);
@@ -39,14 +39,13 @@ public class LCD {
 		 sendByte(COMMAND, fontLineCommand);
 		 
 		 sendByte(COMMAND, displayOff);
-		 sendByte(COMMAND, displayClear);
+		 sendByte(COMMAND, DISPLAYCLEAR);
 		 sendByte(COMMAND, entryModeSet);
 		 sendByte(COMMAND, displayOn);
-		 System.out.println("coiso");
 	 }
 	 
 	 /**
-	  * Escreve um carácter na posição corrente.
+	  * Escreve um carï¿½cter na posiï¿½ï¿½o corrente.
 	  * @param c caracter que vai ser escrito
 	  */
 	 public static void write(char c){
@@ -54,17 +53,18 @@ public class LCD {
 	 }
 	 
 	 /**
-	  * Escreve uma string na posição corrente.
+	  * Escreve uma string na posiï¿½ï¿½o corrente.
 	  * @param txt texto que vai ser escrito
 	  */
 	 public static void write(String txt){
+		 System.out.println(txt);
 		 for (int i = 0; i < txt.length(); i++){
 		    write(txt.charAt(i));
 		}
 	 }
 	 
 	 /**
-	  * Envia comando para posicionar cursor (‘lin’:0..LINES-1 , ‘col’:0..COLS-1)
+	  * Envia comando para posicionar cursor (ï¿½linï¿½:0..LINES-1 , ï¿½colï¿½:0..COLS-1)
 	  * @param lin
 	  * @param col
 	  */
@@ -72,6 +72,21 @@ public class LCD {
 		 int DB7 = 0X80;
 		 int LINHA = 0X40;
 		 
-		 sendByte(COMMAND, DB7|(lin * LINHA + col));
+		 sendByte(COMMAND, DB7 | (lin * LINHA + col));
 	 }
+
+	/**
+	 * Este mÃ©todo permite limpar o LCD
+	 */
+	public static void clearDisplay(){
+		sendByte(COMMAND, DISPLAYCLEAR);
+	}
+
+	/**
+	 * Este metodo permite verificar se o MIS esta ocupado
+	 * @return
+	 */
+	public static boolean isBusy(){
+		return Emitter.busy();
+	}
 }

@@ -20,7 +20,7 @@ public class UserManager {
 	 * @return
 	 * @throws FullListException 
 	 */
-	public User createUser(int id, String nome, int password, int acumulado, int minutes) throws FullListException{
+	public User createUser(String id, String nome, String password, int acumulado, int minutes) throws FullListException{
 		if(users.size() == NUM_USERS){
 			throw new FullListException("Users list is full");
 		}else{
@@ -38,14 +38,15 @@ public class UserManager {
 	 * @return User 
 	 * @throws UserNotFoundException 
 	 */
-	public User findUser(int id) throws UserNotFoundException{
-		try{
-			
-			return users.get(id);
-			
-		}catch(IndexOutOfBoundsException exception){
-			throw new UserNotFoundException("User with id: "+ id +" not found");
+	public User findUser(String id) throws UserNotFoundException{
+
+		for (User user : users) {
+			if (user.getId().equals(id)){
+				return user;
+			}
 		}
+		throw new UserNotFoundException("User with id: "+ id +" not found");
+
 	}
 	
 	/**
@@ -53,5 +54,26 @@ public class UserManager {
 	 */
 	public void loadUsers(){
 		users = userDAO.getUsers();
+	}
+	
+	/**
+	 * Guarda os utilzadores existentes na nossa Data Access Layer
+	 */
+	public void saveUsers(){
+		userDAO.saveUsers(users);
+	}
+
+	/**
+	 * Guarda utilizador na lista
+	 * @param currentUser
+	 */
+	public void saveUser(User currentUser) {
+		for (User user : users) {
+			if (user.getId().equals(currentUser.getId())){
+				user.setSum(currentUser.getSum());
+				user.setMinutes(currentUser.getMinutes());
+				break;
+			}
+		}
 	}
 }

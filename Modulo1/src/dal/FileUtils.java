@@ -27,13 +27,14 @@ public class FileUtils {
 	    return fileLines;
 	}
 	
-	public void writeToFile(String fileName, String[] users) throws IOException {
+	public void writeToFile(String fileName, String[] lines) throws IOException {
 		BufferedWriter wr = new BufferedWriter(new FileWriter(fileName));
 	    try {
-	        for (String user : users) {
-	        	wr.write(user);
-	        	wr.newLine();
+	    	for (int i = 0; i < lines.length -1; i++) {
+	    		wr.write(lines[i]);
+	    		wr.newLine();
 			}
+	    	wr.write(lines[lines.length - 1]);
 	    } finally {
 	        wr.close();
 	    }

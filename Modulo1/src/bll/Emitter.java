@@ -3,9 +3,9 @@ import dal.Kit;
 
 
 public class Emitter {
-	public static final int MIBy_MASK = 0x20; // Máscara para obter o 5 bit, do Kit
-	public static final int MIxD_MASK = 0x02; // Máscara para emitir o segundo bit de menor peso para o Kit
-	public static final int MIck_MASK = 0x04; // Máscara para emitir o terceiro bit de menor peso para o Kit
+	public static final int MIBy_MASK = 0x10; // Máscara para obter o 5 bit, do Kit
+	public static final int MIxD_MASK = 0x02; // Máscara para emitir o 2 bit, do Kit
+	public static final int MIck_MASK = 0x04; // Máscara para emitir o 3 bit, do Kit
 	private static int in_val;
 	
 	
@@ -27,10 +27,11 @@ public class Emitter {
 	 */
 	public static boolean busy(){
 		in_val = Kit.in();
+
 		if((in_val&MIBy_MASK) == MIBy_MASK){
 			return true;
 		}
-		
+
 		return false;
 	}
 	
@@ -71,9 +72,9 @@ public class Emitter {
 	private static void initTransmission(){
 		Kit.clrBit(MIck_MASK);
 		Kit.setBit(MIxD_MASK);
-		Kit.sleep(2);
+		Kit.sleep(5);
 		Kit.clrBit(MIxD_MASK);
-		Kit.sleep(2);
+		Kit.sleep(5);
 	}
 	
 }

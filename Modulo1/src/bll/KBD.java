@@ -3,11 +3,10 @@ import dal.Kit;
 
 
 public class KBD {
-	public static final int KEY_MASK = 0x0F; // Máscara para obter os 4 bits, menor peso, do Kit
-	public static final int K_VAL_MASK = 0x10; // Máscara para obter o bit maior peso do valor de entrada do Kit
-	public static final int K_ACK_MASK = 0x01; // Máscara para emitir o bit de menor peso para o Kit
+	public static final int KEY_MASK = 0x0F; // Máscara para obter os 4 primeiros bits, do Kit
+	public static final int OBF_MASK = 0x80;  // Máscara para obter o 8 bit, do Kit
+	public static final int K_ACK_MASK = 0x01; // Máscara para emitir o 1 bit, do Kit
 	public static final char NONE = 0; // Valor retornado quando não há tecla.
-	private static final boolean SCAN_SOFTWARE = true; // Mudar na implementação 2.
 	private static char[] keys;
 	
 	
@@ -19,7 +18,7 @@ public class KBD {
 	public static char getKey(){
 		int in_val = 0;
 		in_val = Kit.in();
-		if ((in_val&K_VAL_MASK) == K_VAL_MASK){
+		if ((in_val& OBF_MASK) == OBF_MASK){
 			
 			//aplicar mascara e obter a tecla
 			System.out.println("Valor da tecla " + (in_val&KEY_MASK));
@@ -28,7 +27,7 @@ public class KBD {
 			Kit.out(K_ACK_MASK);
 			
 			while(true){
-				if(( Kit.in()&K_VAL_MASK) != K_VAL_MASK){
+				if(( Kit.in()& OBF_MASK) != OBF_MASK){
 					Kit.clear();
 					break;
 				}
@@ -80,7 +79,8 @@ public class KBD {
 	 * Método privado que inicializa o mapeamento dos caracteres com os valores inteiros recebidos pelo Kit
 	 */
 	private static void initChars(){
-		KBD.keys = new char[]{'0', '4', '8', 'C', '1', '5', '9', 'D','2', '6', 'A', 'E', '3', '7', 'B', 'F'};
+//		KBD.keys = new char[]{'0', '4', '8', 'C', '1', '5', '9', 'D','2', '6', 'A', 'E', '3', '7', 'B', 'F'};
+		KBD.keys = new char[]{'0', '1', '2', '3', '4', '5', '6', '7','8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
 	}
 
 }
